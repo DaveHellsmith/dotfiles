@@ -1,12 +1,4 @@
-export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
-
 export EDITOR="nvim"
-
-#
-# app inits
-#
-eval "$(rbenv init -)"
 
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
@@ -17,18 +9,23 @@ zplug "lib/key-bindings", from:oh-my-zsh
 zplug "lib/termsupport", from:oh-my-zsh
 
 zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/bundler", from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/docker", from:oh-my-zsh
 zplug "plugins/extract", from:oh-my-zsh
 zplug "plugins/npm", from:oh-my-zsh
 zplug "plugins/nvm", from:oh-my-zsh
 zplug "plugins/osx", from:oh-my-zsh
-zplug "plugins/rake", from:oh-my-zsh
-zplug "plugins/rbenv", from:oh-my-zsh
+
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting"
-zplug "denysdovhan/spaceship-zsh-theme", as:theme
+
+# zplug "denysdovhan/spaceship-zsh-theme", as:theme
+zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+
+
+# spaceship-promt options
+SPACESHIP_GCLOUD_SHOW=false
+SPACESHIP_PROMPT_SEPARATE_LINE=true
 
 if ! zplug check; then
   zplug install
@@ -36,16 +33,26 @@ fi
 
 zplug load
 
+alias ls='exa'                                                          # ls
+alias l='exa -lbF --git'                                                # list, size, type, git
+alias ll='exa -lbGF --git'                                              # long list
+alias llm='exa -lbGd --git --sort=modified'                             # long list, modified date sort
+alias la='exa -lbhHigUmuSa --time-style=long-iso --git --color-scale'   # all list
+alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --git --color-scale'  # all + extended list
 
+# removing the git alias for the gitplugin
+unalias g
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# enables autojump for directory navigation
+# [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# export VIMCONF="$HOME/.config/nvim/init.vim"
+
+# export GOPATH="$HOME/go";
+
+# export GOROOT="$HOME/.go";
+
+# export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
+
+# [[ -s "/Users/dave/.gvm/scripts/gvm" ]] && source "/Users/dave/.gvm/scripts/gvm"
