@@ -1,6 +1,6 @@
 export EDITOR="nvim"
 
-export ZPLUG_HOME=/usr/local/opt/zplug
+export ZPLUG_HOME=/opt/homebrew/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
 zplug "lib/completion", from:oh-my-zsh
@@ -13,19 +13,13 @@ zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/docker", from:oh-my-zsh
 zplug "plugins/extract", from:oh-my-zsh
 zplug "plugins/npm", from:oh-my-zsh
-zplug "plugins/nvm", from:oh-my-zsh
 zplug "plugins/osx", from:oh-my-zsh
 
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting"
 
-# zplug "denysdovhan/spaceship-zsh-theme", as:theme
-zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
-
-
-# spaceship-promt options
-SPACESHIP_GCLOUD_SHOW=false
-SPACESHIP_PROMPT_SEPARATE_LINE=true
+zplug mafredri/zsh-async, from:github
+zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 
 if ! zplug check; then
   zplug install
@@ -33,8 +27,9 @@ fi
 
 zplug load
 
+# Set exa aliases
 alias ls='exa'                                                          # ls
-alias l='exa -lbF --git'                                                # list, size, type, git
+alias l='exa -lbF --git'                                               # list, size, type, git
 alias ll='exa -lbGF --git'                                              # long list
 alias llm='exa -lbGd --git --sort=modified'                             # long list, modified date sort
 alias la='exa -lbhHigUmuSa --time-style=long-iso --git --color-scale'   # all list
@@ -44,15 +39,21 @@ alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --git --color-scale'  # all + 
 unalias g
 
 # enables autojump for directory navigation
-# [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
-# export VIMCONF="$HOME/.config/nvim/init.vim"
+# enables fzf fuzzy searches
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# export GOPATH="$HOME/go";
+# setting up rust environment variables
+source $HOME/.cargo/env
 
-# export GOROOT="$HOME/.go";
+# overriding the default folder for global npm packages
+export PATH=~/.npm-global/bin:$PATH
 
-# export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
+# adding solana to path
+export PATH="/Users/dave/.local/share/solana/install/active_release/bin:$PATH"
 
-# [[ -s "/Users/dave/.gvm/scripts/gvm" ]] && source "/Users/dave/.gvm/scripts/gvm"
+# Golang settings
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
