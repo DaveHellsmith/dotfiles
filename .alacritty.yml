@@ -50,16 +50,16 @@ window:
 font:
   normal:
     style: Regular
-    family: "Monoid"
+    family: "Monoid NF"
   bold:
     style: Bold
-    family: "Monoid"
+    family: "Monoid NF"
   italic:
     style: Italic
-    family: "Monoid"
+    family: "Monoid NF"
   bold_italic:
     style: Bold Italic
-    family: "Monoid"
+    family: "Monoid NF"
   size: 12.0
 
 mouse_bindings:
