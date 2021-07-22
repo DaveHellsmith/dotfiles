@@ -59,9 +59,6 @@ set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion
 set shortmess+=c
 
-" Enable completion plugion for all buffers
-autocmd BufEnter * lua require'completion'.on_attach()
-
 " Setup for Gruvbox theme
 let g:gruvbox_transparent_bg = 1
 

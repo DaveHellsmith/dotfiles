@@ -7,6 +7,16 @@ lua << EOF
 local nvim_lsp = require('lspconfig')
 
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'documentation',
+    'detail',
+    'additionalTextEdits',
+  }
+}
+
 local on_attach = function(client, bufnr)
 	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 	local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -38,6 +48,7 @@ nvim_lsp.gopls.setup {
         staticcheck = true,
       },
     },
+	  capabilities = capabilities,
 }
 
 --Additional golang setup
@@ -70,6 +81,46 @@ function goimports(timeout_ms)
     vim.lsp.buf.execute_command(action)
   end
 end
+
+nvim_lsp.diagnosticls.setup{
+  filetypes = { "javascript", "javascript.jsx" },
+  init_options = {
+    filetypes = {
+      javascript = "eslint",
+      ["javascript.jsx"] = "eslint",
+      javascriptreact = "eslint",
+      typescriptreact = "eslint",
+    },
+    linters = {
+      eslint = {
+        sourceName = "eslint",
+        command = "./node_modules/.bin/eslint",
+        rootPatterns = { "node_modules" },
+        debounce = 100,
+        args = {
+          "--stdin",
+          "--stdin-filename",
+          "%filepath",
+          "--format",
+          "json",
+        },
+        parseJson = {
+          errorsRoot = "[0].messages",
+          line = "line",
+          column = "column",
+          endLine = "endLine",
+          endColumn = "endColumn",
+          message = "${message} [${ruleId}]",
+          security = "severity",
+        };
+        securities = {
+          [2] = "error",
+          [1] = "warning"
+        }
+      }
+    }
+  }
+}
 EOF
 
 

@@ -25,11 +25,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-" Completion lib
-Plug 'nvim-lua/completion-nvim'
-
-" Autosave
-Plug 'Pocco81/AutoSave.nvim'
+" Completion
+Plug 'hrsh7th/nvim-compe'
 
 " Plugins to enable telescope
 Plug 'nvim-lua/popup.nvim'
@@ -38,5 +35,11 @@ Plug 'nvim-telescope/telescope.nvim'
 
 " Rooter
 Plug 'ahmedkhalf/lsp-rooter.nvim'
+
+" Snippets
+Plug 'hrsh7th/vim-vsnip'
+
+" Support for linters
+Plug 'iamcco/diagnostic-languageserver'
 
 call plug#end()
