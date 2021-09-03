@@ -1,6 +1,9 @@
 " Plugins managed via vim-plug
 call plug#begin(stdpath('data') . '/plugged')
 
+" Status line
+Plug 'shadmansaleh/lualine.nvim'
+
 " LSP setup
 Plug 'neovim/nvim-lspconfig'
 Plug 'glepnir/lspsaga.nvim'
@@ -42,4 +45,14 @@ Plug 'hrsh7th/vim-vsnip'
 " Support for linters
 Plug 'iamcco/diagnostic-languageserver'
 
+" Support for solidity until tresitter supports its
+Plug 'tomlion/vim-solidity'
+
+" Support for TOML file highligting
+Plug 'cespare/vim-toml'
+
+" Support for commenting lines
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+Plug 'terrortylor/nvim-comment'
+ 
 call plug#end()
