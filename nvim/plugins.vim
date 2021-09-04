@@ -19,10 +19,10 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tpope/vim-fugitive'
 
 " Directory tree
-Plug 'scrooloose/nerdtree'
+Plug 'kyazdani42/nvim-tree.lua' 
 
 " Icons for the directory tree
-Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons' 
 
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
