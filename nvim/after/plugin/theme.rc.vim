@@ -15,4 +15,9 @@
 " autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE
 "  
 " colorscheme gruvbox 
-colorscheme nord
+" colorscheme nord
+
+syntax on
+set t_Co=256
+set cursorline
+colorscheme onehalfdark 

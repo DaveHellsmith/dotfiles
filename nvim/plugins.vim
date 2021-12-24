@@ -15,6 +15,9 @@ Plug 'morhetz/gruvbox'
 " Nord theme
 Plug 'shaunsingh/nord.nvim'
 
+" Onehalf theme
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+
 "Tree sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -58,7 +61,4 @@ Plug 'cespare/vim-toml'
 Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'terrortylor/nvim-comment'
  
-" Plugin for rspec support
-Plug 'thoughtbot/vim-rspec'
-
 call plug#end()
