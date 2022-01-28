@@ -5,6 +5,37 @@ endif
 
 lua << EOF
 local nvim_lsp = require('lspconfig')
+local coq = require('coq')
+
+nvim_lsp.tsserver.setup{}
+nvim_lsp.tsserver.setup(coq.lsp_ensure_capabilities{})
+
+nvim_lsp.eslint.setup{}
+nvim_lsp.eslint.setup(coq.lsp_ensure_capabilities{})
+
+vim.cmd('COQnow -s')
+
+local lsp_installer = require "nvim-lsp-installer"
+
+lsp_installer.on_server_ready(function (server)
+    local opts = {
+        on_attach = common_on_attach,
+    }
+
+    if server.name == "eslint" then
+        opts.on_attach = function (client, bufnr)
+            -- neovim's LSP client does not currently support dynamic capabilities registration, so we need to set
+            -- the resolved capabilities of the eslint server ourselves!
+            client.resolved_capabilities.document_formatting = true
+            common_on_attach(client, bufnr)
+        end
+        opts.settings = {
+            format = { enable = true }, -- this will enable formatting
+        }
+    end
+
+    server:setup(opts)
+end)
 
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -35,94 +66,5 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_command [[augroup END]]
   end
 end
-
--- Golang setup
-nvim_lsp.gopls.setup {
-    on_attach = on_attach,
-	  cmd = {"gopls", "--remote=auto", "serve"},
-    settings = {
-      gopls = {
-        analyses = {
-          unusedparams = true,
-        },
-        staticcheck = true,
-      },
-    },
-	  capabilities = capabilities,
-}
-
---Additional golang setup
-function goimports(timeout_ms)
-  local context = { only = { "source.organizeImports" } }
-  vim.validate { context = { context, "t", true } }
-
-  local params = vim.lsp.util.make_range_params()
-  params.context = context
-
-  -- See the implementation of the textDocument/codeAction callback
-  -- (lua/vim/lsp/handler.lua) for how to do this properly.
-  local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, timeout_ms)
-  if not result or next(result) == nil then return end
-  local actions = result[1].result
-  if not actions then return end
-  local action = actions[1]
-
-  -- textDocument/codeAction can return either Command[] or CodeAction[]. If it
-  -- is a CodeAction, it can have either an edit, a command or both. Edits
-  -- should be executed first.
-  if action.edit or type(action.command) == "table" then
-    if action.edit then
-      vim.lsp.util.apply_workspace_edit(action.edit)
-    end
-    if type(action.command) == "table" then
-      vim.lsp.buf.execute_command(action.command)
-    end
-  else
-    vim.lsp.buf.execute_command(action)
-  end
-end
-
-nvim_lsp.diagnosticls.setup{
-  filetypes = { "javascript", "javascript.jsx" },
-  init_options = {
-    filetypes = {
-      javascript = "eslint",
-      ["javascript.jsx"] = "eslint",
-      javascriptreact = "eslint",
-      typescriptreact = "eslint",
-    },
-    linters = {
-      eslint = {
-        sourceName = "eslint",
-        command = "./node_modules/.bin/eslint",
-        rootPatterns = { "node_modules" },
-        debounce = 100,
-        args = {
-          "--stdin",
-          "--stdin-filename",
-          "%filepath",
-          "--format",
-          "json",
-        },
-        parseJson = {
-          errorsRoot = "[0].messages",
-          line = "line",
-          column = "column",
-          endLine = "endLine",
-          endColumn = "endColumn",
-          message = "${message} [${ruleId}]",
-          security = "severity",
-        };
-        securities = {
-          [2] = "error",
-          [1] = "warning"
-        }
-      }
-    }
-  }
-}
 EOF
-
-
-autocmd BufWritePre *.go lua goimports(1000)
 

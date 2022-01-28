@@ -7,7 +7,12 @@ Plug 'shadmansaleh/lualine.nvim'
 " LSP setup
 Plug 'neovim/nvim-lspconfig'
 Plug 'glepnir/lspsaga.nvim'
-Plug 'kabouzeid/nvim-lspinstall'
+
+" For installing and discovering language servers
+Plug 'williamboman/nvim-lsp-installer'
+
+" Completion
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 
 " Gruvbox theme
 Plug 'morhetz/gruvbox'
@@ -18,11 +23,11 @@ Plug 'shaunsingh/nord.nvim'
 " Onehalf theme
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
+" Nightfox theme
+Plug 'EdenEast/nightfox.nvim'
+
 "Tree sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-" Git plugin
-Plug 'tpope/vim-fugitive'
 
 " Directory tree
 Plug 'kyazdani42/nvim-tree.lua' 
@@ -34,9 +39,6 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-" Completion
-Plug 'hrsh7th/nvim-compe'
-
 " Plugins to enable telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -44,12 +46,6 @@ Plug 'nvim-telescope/telescope.nvim'
 
 " Rooter
 Plug 'ahmedkhalf/lsp-rooter.nvim'
-
-" Snippets
-Plug 'hrsh7th/vim-vsnip'
-
-" Support for linters
-Plug 'iamcco/diagnostic-languageserver'
 
 " Support for solidity until tresitter supports its
 Plug 'tomlion/vim-solidity'

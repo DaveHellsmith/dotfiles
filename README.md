@@ -1,4 +1,4 @@
 # Dotfiles
 
-My dotfiles for zsh, alacritty, tmux and nvim
+A bunch of my dotfiles.
 

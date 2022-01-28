@@ -17,7 +17,10 @@
 " colorscheme gruvbox 
 " colorscheme nord
 
-syntax on
-set t_Co=256
-set cursorline
-colorscheme onehalfdark 
+" syntax on
+" set t_Co=256
+" set cursorline
+" colorscheme onehalfdark 
+
+
+colorscheme nightfox
