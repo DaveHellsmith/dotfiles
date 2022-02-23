@@ -6,25 +6,16 @@ Plug 'shadmansaleh/lualine.nvim'
 
 " LSP setup
 Plug 'neovim/nvim-lspconfig'
-Plug 'glepnir/lspsaga.nvim'
 
 " For installing and discovering language servers
 Plug 'williamboman/nvim-lsp-installer'
 
 " Completion
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 
-" Gruvbox theme
-Plug 'morhetz/gruvbox'
-
-" Nord theme
-Plug 'shaunsingh/nord.nvim'
-
-" Onehalf theme
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
-
-" Nightfox theme
-Plug 'EdenEast/nightfox.nvim'
+" Catpuccin theme
+Plug 'catppuccin/nvim'
 
 "Tree sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -56,5 +47,5 @@ Plug 'cespare/vim-toml'
 " Support for commenting lines
 Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'terrortylor/nvim-comment'
- 
+
 call plug#end()
