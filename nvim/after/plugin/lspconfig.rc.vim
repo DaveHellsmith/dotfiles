@@ -51,27 +51,24 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
   }
 }
 
+-- Keybindings
+
 local on_attach = function(client, bufnr)
 	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 	local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-	 --Enable completion triggered by <c-x><c-o>
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-	  -- Mappings.
-  local opts = { noremap=true, silent=true }
-
 	  -- formatting
   if client.resolved_capabilities.document_formatting then
     vim.api.nvim_command [[augroup Format]]
+
     vim.api.nvim_command [[autocmd! * <buffer>]]
     vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
+
+
     vim.api.nvim_command [[augroup END]]
   end
 end
-
--- Keybindings
-local opts = { silent = true }
+local opts = { silent = true, noremap=true }
 
 local lsp_opts = vim.tbl_extend('force', opts, { expr = true })
 
@@ -90,6 +87,10 @@ vim.api.nvim_set_keymap('n', 'K', ':lua vim.lsp.buf.hover()<CR>', opts)
 vim.api.nvim_set_keymap('n', '[g', ':lua vim.lsp.diagnostic.goto_prev()<CR>', opts) -- Jump to previous diagnostic
 
 vim.api.nvim_set_keymap('n', ']g', ':lua vim.lsp.diagnostic.goto_next()<CR>', opts) -- Jump to next diagnostic
+
+vim.api.nvim_set_keymap('n', 'fd', ':lua vim.lsp.buf.formatting()<CR>', opts)
+
+vim.api.nvim_set_keymap('n', 'lr', ':lua vim.lsp.buf.rename()<CR>', opts)
 
 vim.cmd(
 	'command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()'
