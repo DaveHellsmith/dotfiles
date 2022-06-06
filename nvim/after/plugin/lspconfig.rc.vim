@@ -5,15 +5,9 @@ endif
 
 lua << EOF
 local nvim_lsp = require('lspconfig')
-local coq = require('coq')
 
 nvim_lsp.tsserver.setup{}
-nvim_lsp.tsserver.setup(coq.lsp_ensure_capabilities{})
-
 nvim_lsp.eslint.setup{}
-nvim_lsp.eslint.setup(coq.lsp_ensure_capabilities{})
-
-vim.cmd('COQnow -s')
 
 local lsp_installer = require "nvim-lsp-installer"
 
