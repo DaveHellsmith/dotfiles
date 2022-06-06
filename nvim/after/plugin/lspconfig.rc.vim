@@ -86,6 +86,8 @@ vim.api.nvim_set_keymap('n', 'fd', ':lua vim.lsp.buf.formatting()<CR>', opts)
 
 vim.api.nvim_set_keymap('n', 'lr', ':lua vim.lsp.buf.rename()<CR>', opts)
 
+vim.keymap.set('n', '<leader>f', vim.diagnostic.open_float)
+
 vim.cmd(
 	'command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()'
 )
