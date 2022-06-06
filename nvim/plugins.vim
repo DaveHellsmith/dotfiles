@@ -10,12 +10,8 @@ Plug 'neovim/nvim-lspconfig'
 " For installing and discovering language servers
 Plug 'williamboman/nvim-lsp-installer'
 
-" Completion
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-
 " Catpuccin theme
-Plug 'catppuccin/nvim'
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 
 "Tree sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -34,6 +30,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
+" Plugin for a better ui-select
+Plug 'stevearc/dressing.nvim'
 
 " Rooter
 Plug 'ahmedkhalf/lsp-rooter.nvim'

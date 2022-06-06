@@ -91,6 +91,7 @@ lua << EOF
         ["m"] = "move", -- takes text input for destination
         ["q"] = "close_window",
         ["R"] = "refresh",
+        ["u"] = "navigate_up",
       }
     },
     nesting_rules = {},

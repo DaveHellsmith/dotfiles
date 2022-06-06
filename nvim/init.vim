@@ -2,8 +2,7 @@
 runtime ./plugins.vim
 
 " Enable numbering
-:set relativenumber       
-:set rnu
+:set relativenumber
 
 :set mouse=a
 
@@ -25,5 +24,8 @@ set shiftwidth=2
 set expandtab
 set smartindent
 
+
 " Theme
-colorscheme catppuccin
+colorscheme catppuccin 
+
+hi Normal guibg=NONE ctermbg=NONE
