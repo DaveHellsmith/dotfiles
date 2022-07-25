@@ -24,8 +24,12 @@ set shiftwidth=2
 set expandtab
 set smartindent
 
+hi Normal guibg=NONE ctermbg=NONE
+
+augroup user_colors
+  autocmd!
+  autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+augroup END
 
 " Theme
 colorscheme catppuccin 
-
-hi Normal guibg=NONE ctermbg=NONE

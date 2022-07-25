@@ -24,7 +24,7 @@ lsp_installer.on_server_ready(function (server)
         opts.on_attach = function (client, bufnr)
             -- neovim's LSP client does not currently support dynamic capabilities registration, so we need to set
             -- the resolved capabilities of the eslint server ourselves!
-            client.resolved_capabilities.document_formatting = true
+            client.server_capabilities.documentFormattingProvider = true
             common_on_attach(client, bufnr)
         end
         opts.settings = {
@@ -52,7 +52,7 @@ local on_attach = function(client, bufnr)
 	local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
 	  -- formatting
-  if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.documentFormattingProvider then
     vim.api.nvim_command [[augroup Format]]
 
     vim.api.nvim_command [[autocmd! * <buffer>]]
@@ -82,7 +82,7 @@ vim.api.nvim_set_keymap('n', '[g', ':lua vim.lsp.diagnostic.goto_prev()<CR>', op
 
 vim.api.nvim_set_keymap('n', ']g', ':lua vim.lsp.diagnostic.goto_next()<CR>', opts) -- Jump to next diagnostic
 
-vim.api.nvim_set_keymap('n', 'fd', ':lua vim.lsp.buf.formatting()<CR>', opts)
+vim.api.nvim_set_keymap('n', 'fd', ':lua vim.lsp.buf.format()<CR>', opts)
 
 vim.api.nvim_set_keymap('n', 'lr', ':lua vim.lsp.buf.rename()<CR>', opts)
 
