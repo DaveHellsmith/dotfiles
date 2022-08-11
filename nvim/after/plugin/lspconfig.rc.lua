@@ -1,9 +1,3 @@
-if !exists('g:lspconfig')
-  finish
-endif
-
-
-lua << EOF
 local nvim_lsp = require('lspconfig')
 
 nvim_lsp.tsserver.setup{}
@@ -36,7 +30,9 @@ lsp_installer.on_server_ready(function (server)
 end)
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = {
     'documentation',
@@ -62,6 +58,7 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_command [[augroup END]]
   end
 end
+
 local opts = { silent = true, noremap=true }
 
 local lsp_opts = vim.tbl_extend('force', opts, { expr = true })
@@ -91,5 +88,4 @@ vim.keymap.set('n', '<leader>f', vim.diagnostic.open_float)
 vim.cmd(
 	'command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()'
 )
-EOF
 
