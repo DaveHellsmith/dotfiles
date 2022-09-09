@@ -17,7 +17,8 @@ packer.startup(function(use)
 
   use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
 
-  use 'williamboman/nvim-lsp-installer'
+  use { "williamboman/mason.nvim" }
+  use { "williamboman/mason-lspconfig.nvim" }
 
   use { "catppuccin/nvim", as = "catppuccin" }
 
