@@ -54,17 +54,17 @@ window:
 
 font:
   normal:
-    style: Book
-    family: "CaskaydiaCove NF"
+    style: Regular 
+    family: "CaskaydiaCove Nerd Font"
   bold:
-    style: Book
-    family: "CaskaydiaCove NF"
+    style: Bold 
+    family: "CaskaydiaCove Nerd Font"
   italic:
-    style: Book
-    family: "CaskaydiaCove NF"
+    style: Italics 
+    family: "CaskaydiaCove Nerd Font"
   bold_italic:
-    style: Book
-    family: "CaskaydiaCove NF"
+    style: Bold Italic 
+    family: "CaskaydiaCove Nerd Font"
   size: 12.0
 
 mouse_bindings:

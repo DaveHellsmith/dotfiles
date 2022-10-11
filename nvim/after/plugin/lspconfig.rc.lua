@@ -49,3 +49,13 @@ nvim_lsp.gopls.setup {
   end,
   filetypes = { "go" },
 }
+
+nvim_lsp.solc.setup {}
+
+nvim_lsp["prisma-language-server"].setup {
+  on_attach = function (client, bufrn)
+    client.server_capabilities.documentFormattingProvider = true
+    on_attach(client, bufnr)
+  end,
+  filetypes = { "prisma" },
+}

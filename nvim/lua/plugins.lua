@@ -65,4 +65,9 @@ packer.startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
+
+  -- Markdown preview
+  use {
+    'ellisonleao/glow.nvim'
+  }
 end)
