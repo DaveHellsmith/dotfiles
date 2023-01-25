@@ -1,5 +1,5 @@
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "javascript", "typescript", "lua", "go", "solidity", "prisma", "graphql" },
+  ensure_installed = { "javascript", "typescript", "lua", "go", "solidity", "prisma", "graphql", "astro", "hcl", "svelte", "css" },
 
   highlight = {
     enable = true,

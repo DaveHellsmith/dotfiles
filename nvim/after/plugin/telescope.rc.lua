@@ -19,3 +19,9 @@ end)
 vim.keymap.set('n', '<leader>fh', function()
   builtin.help_tags()
 end)
+
+telescope.setup({
+  defaults = {
+    initial_mode = "normal",
+  },
+})

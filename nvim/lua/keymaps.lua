@@ -3,6 +3,8 @@ local opts = { silent = true, noremap=true }
 
 local lsp_opts = vim.tbl_extend('force', opts, { expr = true })
 
+vim.g.mapleader = " "
+
 vim.api.nvim_set_keymap('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>', opts)
 
 vim.api.nvim_set_keymap('n', 'gd', ':Telescope lsp_definitions<CR>', opts) -- Goto the definition of the word under the cursor, if there's only one, otherwise show all options in Telescope

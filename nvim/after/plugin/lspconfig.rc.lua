@@ -1,7 +1,5 @@
 local nvim_lsp = require('lspconfig')
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 capabilities.textDocument.completion.completionItem.resolveSupport = {
@@ -20,8 +18,7 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_command [[augroup Format]]
 
     vim.api.nvim_command [[autocmd! * <buffer>]]
-    vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
-
+    vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 
     vim.api.nvim_command [[augroup END]]
   end
@@ -52,10 +49,6 @@ nvim_lsp.gopls.setup {
 
 nvim_lsp.solc.setup {}
 
-nvim_lsp["prisma-language-server"].setup {
-  on_attach = function (client, bufrn)
-    client.server_capabilities.documentFormattingProvider = true
-    on_attach(client, bufnr)
-  end,
-  filetypes = { "prisma" },
-}
+nvim_lsp.svelte.setup {}
+
+nvim_lsp.tailwindcss.setup {}
