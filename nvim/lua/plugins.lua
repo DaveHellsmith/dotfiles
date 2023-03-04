@@ -22,6 +22,8 @@ packer.startup(function(use)
 
   use { "catppuccin/nvim", as = "catppuccin" }
 
+  use "EdenEast/nightfox.nvim"
+
   use 'kyazdani42/nvim-web-devicons' 
 
   use {

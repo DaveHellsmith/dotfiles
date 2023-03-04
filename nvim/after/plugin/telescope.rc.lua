@@ -20,6 +20,10 @@ vim.keymap.set('n', '<leader>fh', function()
   builtin.help_tags()
 end)
 
+vim.keymap.set('n', '<leader>fn', function()
+  builtin.current_buffer_fuzzy_find()
+end)
+
 telescope.setup({
   defaults = {
     initial_mode = "normal",
