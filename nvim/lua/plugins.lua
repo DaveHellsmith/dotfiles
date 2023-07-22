@@ -17,12 +17,12 @@ packer.startup(function(use)
 
   use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
 
+  use 'github/copilot.vim' -- Configurations for Github Copilot
+
   use { "williamboman/mason.nvim" }
   use { "williamboman/mason-lspconfig.nvim" }
 
   use { "catppuccin/nvim", as = "catppuccin" }
-
-  use "EdenEast/nightfox.nvim"
 
   use 'kyazdani42/nvim-web-devicons' 
 
@@ -58,7 +58,7 @@ packer.startup(function(use)
     branch = "v2.x",
     requires = { 
       "nvim-lua/plenary.nvim",
-      "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+      "kyazdani42/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     }
   }
@@ -66,10 +66,5 @@ packer.startup(function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
-  }
-
-  -- Markdown preview
-  use {
-    'ellisonleao/glow.nvim'
   }
 end)

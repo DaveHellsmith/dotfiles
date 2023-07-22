@@ -11,7 +11,9 @@ require'nvim-treesitter.configs'.setup {
     "hcl", 
     "svelte", 
     "css", 
-    "fish" 
+    "fish",
+    "html",
+    "kdl",
   },
   highlight = {
     enable = true,

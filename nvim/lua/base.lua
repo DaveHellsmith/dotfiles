@@ -18,3 +18,4 @@ vim.opt.tabstop = 2
 vim.opt.backspace = { 'start', 'eol', 'indent' }
 
 vim.o.fillchars = "vert: ,eob: "
+

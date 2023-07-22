@@ -47,8 +47,10 @@ nvim_lsp.gopls.setup {
   filetypes = { "go" },
 }
 
-nvim_lsp.solc.setup {}
-
 nvim_lsp.svelte.setup {}
 
 nvim_lsp.tailwindcss.setup {}
+
+nvim_lsp.volar.setup {}
+
+nvim_lsp.ltex.setup {}
