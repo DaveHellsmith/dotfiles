@@ -54,3 +54,6 @@ nvim_lsp.tailwindcss.setup {}
 nvim_lsp.volar.setup {}
 
 nvim_lsp.ltex.setup {}
+
+nvim_lsp.rust_analyzer.setup {}
+
