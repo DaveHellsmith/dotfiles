@@ -1,0 +1,42 @@
+return {
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "javascript",
+        "typescript",
+        "bash",
+        "html",
+        "json",
+        "lua",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "query",
+        "regex",
+        "tsx",
+        "vim",
+        "yaml",
+        "lua",
+        "go",
+        "solidity",
+        "prisma",
+        "graphql",
+        "astro",
+        "hcl",
+        "svelte",
+        "css",
+        "fish",
+        "html",
+        "kdl",
+      },
+      highlight = {
+        enable = true,
+      },
+      context_commentstring = {
+        enable = true,
+        enable_autocmd = false,
+      },
+    },
+  },
+}
