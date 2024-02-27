@@ -1,11 +1,10 @@
 return {
-  -- add gruvbox
   {
     "catppuccin/nvim",
-    name = "catppuccin",
     opts = {
+      name = "catppuccin",
+      priority = 1000,
       flavour = "mocha",
-      transparent_background = false,
     },
   },
   {
