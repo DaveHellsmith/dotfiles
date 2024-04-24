@@ -1,2 +1,3 @@
 .DS_Store
-fish/fishd.tmp*
+config/fish/fishd.tmp*
+

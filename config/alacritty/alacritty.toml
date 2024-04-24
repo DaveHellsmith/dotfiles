@@ -27,7 +27,7 @@ opacity = 1
 size = 12
 
   [font.normal]
-  family = "0xProto Nerd Font Mono"
+  family = "RecMonoCasual Nerd Font Mono"
 
 [[mouse.bindings]]
 mouse = "Middle"

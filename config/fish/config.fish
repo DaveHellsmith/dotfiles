@@ -47,6 +47,9 @@ set -gx PATH $GOPATH/bin $PATH
 # Edgedb
 set -gx PATH $HOME/Library/edgedb/bin $PATH
 
+# Solana
+set -gx PATH $HOME/.local/share/solana/install/active_release/bin $PATH
+
 # React Native Android settings
 set -Ux ANDROID_HOME $HOME/Library/Android/sdk
 set -U fish_user_paths $ANDROID_HOME/emulator $fish_user_paths
